@@ -47,8 +47,6 @@ Aplikasi ini mendukung proses pencatatan transaksi, manajemen pelanggan, layanan
 ### Laporan
 ![Laporan](docs/screenshots/laporan.png)
 
-> Simpan screenshot aplikasi kamu di folder `docs/screenshots/` agar otomatis tampil di sini.
-
 ---
 
 ## 📖 Dokumentasi
