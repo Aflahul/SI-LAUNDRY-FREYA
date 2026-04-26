@@ -71,88 +71,93 @@
                         </div>
                     </div>
                 </div>
+                <!-- Sedang Proses Table -->
                 <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20">
-                    <div class="bg-sudah/10 px-6 py-4 border-b border-white/10">
-                        <h3 class="font-bold text-sudah flex items-center gap-2">
+                    <div class="bg-sudah/10 px-4 py-2 border-b border-white/10 flex justify-between items-center">
+                        <h3 class="font-bold text-sudah text-xs flex items-center gap-2">
                             <i class="fa-solid fa-spinner animate-spin-slow"></i>
                             Sedang Proses
                         </h3>
+                        <a href="/laporan" class="text-sudah font-bold hover:underline text-[10px]">Lihat Semua</a>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
-                            <thead class="text-xs uppercase bg-white/50 text-gray-500">
+                        <table class="w-full text-[11px] text-left">
+                            <thead class="text-[10px] uppercase bg-white/50 text-gray-500">
                                 <tr>
-                                    <th class="px-6 py-3 font-semibold">Pelanggan</th>
-                                    <th class="px-6 py-3 font-semibold text-center">Jenis Laundry</th>
-                                    <th class="px-6 py-3 font-semibold text-center">Masuk</th>
-                                    <th class="px-6 py-3 font-semibold text-right">Estimasi</th>
+                                    <th class="px-4 py-2 font-semibold">Pelanggan</th>
+                                    <th class="px-4 py-2 font-semibold text-center">Layanan</th>
+                                    <th class="px-4 py-2 font-semibold text-center">Masuk</th>
+                                    <th class="px-4 py-2 font-semibold text-right">Estimasi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-white/10">
                                 @foreach ($proses as $item)
                                     <tr class="hover:bg-white/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">{{ $item->pelanggan->namapel }}</td>
-                                        <td class="px-6 py-4 text-center">{{ $item->produk->nama_layanan }}</td>
-                                        <td class="px-6 py-4 text-center text-gray-500">{{ $item->created_at->format('d/m/Y') }}</td>
-                                        <td class="px-6 py-4 text-right font-semibold text-sudah">{{ $item->estimasi_selesai->format('d/m/Y') }}</td>
+                                        <td class="px-4 py-2 font-medium">{{ $item->pelanggan->namapel }}</td>
+                                        <td class="px-4 py-2 text-center">{{ $item->produk->nama_layanan }}</td>
+                                        <td class="px-4 py-2 text-center text-gray-500">{{ $item->created_at->format('d/m') }}</td>
+                                        <td class="px-4 py-2 text-right font-semibold text-sudah">{{ $item->estimasi_selesai->format('d/m') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <div class="p-3 bg-white/30 text-center border-t border-white/10">
-                        <a href="/laporan" class="text-sudah font-bold hover:underline text-xs">Lihat Semua</a>
-                    </div>
                 </div>
+
+                <!-- Arus Kas Table -->
                 <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20">
-                    <div class="bg-navbar1/10 px-6 py-4 border-b border-white/10">
-                        <h3 class="font-bold text-navbar1 flex items-center gap-2">
+                    <div class="bg-navbar1/10 px-4 py-2 border-b border-white/10 flex justify-between items-center">
+                        <h3 class="font-bold text-navbar1 text-xs flex items-center gap-2">
                             <i class="fa-solid fa-file-invoice-dollar"></i>
                             Arus Kas Terakhir
                         </h3>
+                        <a href="/laporan" class="text-navbar1 font-bold hover:underline text-[10px]">Lihat Semua</a>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
-                            <thead class="text-xs uppercase bg-white/50 text-gray-500">
+                        <table class="w-full text-[11px] text-left">
+                            <thead class="text-[10px] uppercase bg-white/50 text-gray-500">
                                 <tr>
-                                    <th class="px-6 py-3 font-semibold">Kode</th>
-                                    <th class="px-6 py-3 font-semibold text-center">Sumber Arus</th>
-                                    <th class="px-6 py-3 font-semibold text-center">Aktivitas</th>
-                                    <th class="px-6 py-3 font-semibold text-center">Total</th>
+                                    <th class="px-4 py-2 font-semibold">Kode</th>
+                                    <th class="px-4 py-2 font-semibold text-center">Sumber</th>
+                                    <th class="px-4 py-2 font-semibold text-center">Arus</th>
+                                    <th class="px-4 py-2 font-semibold text-right">Total</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-white/10">
-                                @foreach ($aruss as $item)
+                                @foreach ($aruss->take(5) as $item)
                                     <tr class="hover:bg-white/30 transition-colors">
-                                        <td class="px-6 py-4">
-                                            <span class="text-xs font-bold uppercase text-sudah bg-sudah/10 px-2 py-1 rounded">
+                                        <td class="px-4 py-2">
+                                            <span class="text-[9px] font-bold uppercase text-sudah bg-sudah/10 px-1.5 py-0.5 rounded">
                                                 {{ $item->kode }}
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 text-center font-medium">{{ $item->nama }}</td>
-                                        <td class="px-6 py-4 text-center">
+                                        <td class="px-4 py-2 text-center font-medium">{{ $item->nama }}</td>
+                                        <td class="px-4 py-2 text-center">
                                             <span class="{{ $item->arus == 'Masuk' ? 'text-sudah' : 'text-belum' }} font-bold">
                                                 {{ $item->arus }}
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 text-center font-bold">
-                                            Rp. {{ number_format($item->total, 0, ',', '.') }}
+                                        <td class="px-4 py-2 text-right font-bold">
+                                            Rp{{ number_format($item->total, 0, ',', '.') }}
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <div class="p-3 bg-white/30 text-center border-t border-white/10">
-                        @if (Auth::user()->level === 'admin')
-                            <a href="/laporan" class="text-navbar1 font-bold hover:underline text-xs">Lihat Semua</a>
-                        @else
-                            <span class="text-xs text-gray-400 italic">Akses Terbatas</span>
-                        @endif
-                    </div>
                 </div>
             </div>
             <div class="w-1/3 space-y-8">
+                <!-- Chart Card -->
+                <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="font-bold text-tulisan mb-6">Revenue Statistics</h3>
+                        <div class="h-48">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Info Card Baru -->
                 <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden bg-gradient-to-br from-sudah/10 to-transparent">
                     <div class="p-6">
@@ -224,4 +229,47 @@
             </div>
 
         </div>
-    @endsection
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [1200000, 1900000, 1500000, 2500000, 2200000, 3000000, 2800000],
+                        borderColor: '#2D31FA',
+                        backgroundColor: 'rgba(45, 49, 250, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#2D31FA',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            ticks: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+@endsection

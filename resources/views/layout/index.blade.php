@@ -10,6 +10,7 @@
     <link href="{{ asset('asset/css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/css/all.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ asset('asset/tinymce/js/tinymce/tinymce.min.js') }}"></script>
    <script src="{{ asset('js/app.js') }}" defer></script>
    <style>
@@ -21,18 +22,19 @@
 </head>
 
 <body class="bg-latar text-sm font-sans antialiased">
-    <div class="pt-20 min-h-screen">
-        @include('partials/admin/navbar')
+    @include('partials/admin/navbar')
 
     @if (Auth::check())
         @if (Auth::user()->level === 'admin')
-            @include('partials/admin/sidebar') <!-- Sidebar untuk admin -->
+            @include('partials/admin/sidebar')
         @elseif(Auth::user()->level === 'pegawai')
-            @include('partials/pegawai/sidebar') <!-- Sidebar untuk pegawai -->
+            @include('partials/pegawai/sidebar')
         @endif
     @endif
-    @yield('content')
-    </div>
+
+    <main class="pt-16 min-h-screen">
+        @yield('content')
+    </main>
     <script>
         // Mengatur zona waktu JavaScript ke UTC+8
         Intl.DateTimeFormat().resolvedOptions().timeZone = 'UTC+8';
