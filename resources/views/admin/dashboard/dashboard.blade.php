@@ -207,10 +207,10 @@
                                     </div>
                                     <div class="flex-1">
                                         <p class="text-[11px] font-bold text-tulisan truncate">{{ $pel->namapel }}</p>
-                                        <p class="text-[9px] text-gray-400">{{ $pel->no_hp }}</p>
+                                        <p class="text-[9px] text-gray-400">{{ $pel->kontak }}</p>
                                     </div>
                                     <div class="text-right text-[10px] font-black text-sudah">
-                                        {{ count($pel->order) }} Trx
+                                        {{ count($pel->orders ?? []) }} Trx
                                     </div>
                                 </div>
                             @endforeach
