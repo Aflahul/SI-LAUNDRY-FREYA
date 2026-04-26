@@ -15,95 +15,101 @@
             <hr>
         </div>
         <div class="px-4 mt-6">
-            <!-- Stat Cards Row -->
+            <!-- Navbar-like breadcrumb or title area (matching wireframe top bar) -->
+            <div class="glass w-full py-3 px-6 rounded-2xl mb-8 border border-white/30 flex justify-between items-center bg-white/20">
+                <h2 class="text-lg font-black text-tulisan tracking-tight uppercase">Overview Dashboard</h2>
+                <div class="flex items-center gap-2 text-[10px] font-bold text-gray-400">
+                    <i class="fas fa-home"></i> / <span>Dashboard</span>
+                </div>
+            </div>
+
+            <!-- Stat Cards Row (4 boxes) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <!-- Stat Card: Pelanggan -->
-                <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="glass p-5 rounded-3xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex items-center justify-between">
-                        <div class="p-3 bg-kuning/20 rounded-xl">
+                        <div class="p-3 bg-kuning/20 rounded-2xl">
                             <i class="fa-solid fa-users text-2xl text-kuning"></i>
                         </div>
                         <div class="text-right">
-                            <h5 class="text-2xl font-bold text-tulisan">{{ count($pelanggan) }}</h5>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Pelanggan</p>
+                            <h5 class="text-2xl font-black text-tulisan">{{ count($pelanggan) }}</h5>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Users</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Stat Card: Layanan -->
-                <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="glass p-5 rounded-3xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex items-center justify-between">
-                        <div class="p-3 bg-sudah/20 rounded-xl">
+                        <div class="p-3 bg-sudah/20 rounded-2xl">
                             <i class="fa-solid fa-tags text-2xl text-sudah"></i>
                         </div>
                         <div class="text-right">
-                            <h5 class="text-2xl font-bold text-tulisan">{{ count($produk) }}</h5>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Layanan</p>
+                            <h5 class="text-2xl font-black text-tulisan">{{ count($produk) }}</h5>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Service</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Stat Card: Proses -->
-                <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="glass p-5 rounded-3xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex items-center justify-between">
-                        <div class="p-3 bg-sedang/20 rounded-xl">
+                        <div class="p-3 bg-sedang/20 rounded-2xl">
                             <i class="fa-solid fa-spinner animate-spin-slow text-2xl text-sedang"></i>
                         </div>
                         <div class="text-right">
-                            <h5 class="text-2xl font-bold text-tulisan">{{ count($proses) }}</h5>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Proses</p>
+                            <h5 class="text-2xl font-black text-tulisan">{{ count($proses) }}</h5>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Active</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Stat Card: Profit -->
-                <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="glass p-5 rounded-3xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex items-center justify-between">
-                        <div class="p-3 bg-navbar1/20 rounded-xl">
+                        <div class="p-3 bg-navbar1/20 rounded-2xl">
                             <i class="fa-solid fa-comments-dollar text-2xl text-navbar1"></i>
                         </div>
                         <div class="text-right">
-                            <h5 class="text-xl font-bold text-tulisan">
+                            <h5 class="text-xl font-black text-tulisan">
                                 {{ number_format(optional($arus)->saldo ?? 0, 0, ',', '.') }}
                             </h5>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Profit</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Profit</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Content: 3 Columns Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Column 1: Processes -->
-                <div class="space-y-6">
-                    <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20 h-fit">
-                        <div class="bg-sudah/10 px-4 py-2 border-b border-white/10 flex justify-between items-center">
-                            <h3 class="font-bold text-sudah text-[10px] uppercase tracking-wider flex items-center gap-2">
+            <!-- 3 Column Content Area (Matching wireframe blocks) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
+                
+                <!-- Column 1: Stacked (2 blocks) -->
+                <div class="space-y-8">
+                    <!-- Block 1-1: Sedang Proses -->
+                    <div class="glass overflow-hidden rounded-[2.5rem] shadow-sm border border-white/30 h-fit bg-white/40">
+                        <div class="bg-sudah/10 px-6 py-4 border-b border-white/20 flex justify-between items-center">
+                            <h3 class="font-black text-sudah text-[10px] uppercase tracking-[0.2em] flex items-center gap-2">
                                 <i class="fa-solid fa-spinner animate-spin-slow"></i>
                                 Sedang Proses
                             </h3>
-                            <a href="/laporan" class="text-sudah font-bold hover:underline text-[10px]">Semua</a>
+                            <a href="/laporan" class="text-sudah font-black hover:underline text-[9px] uppercase tracking-tighter">View All</a>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-[11px] text-left">
-                                <thead class="text-[9px] uppercase bg-white/50 text-gray-500">
-                                    <tr>
-                                        <th class="px-4 py-2 font-semibold">Pelanggan</th>
-                                        <th class="px-4 py-2 font-semibold text-right">Estimasi</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-white/10">
-                                    @forelse ($proses as $item)
-                                        <tr class="hover:bg-white/30 transition-colors">
-                                            <td class="px-4 py-2">
-                                                <p class="font-bold text-tulisan">{{ $item->pelanggan->namapel }}</p>
-                                                <p class="text-[9px] text-gray-400">{{ $item->produk->nama_layanan }}</p>
+                                <tbody class="divide-y divide-white/20">
+                                    @forelse ($proses->take(4) as $item)
+                                        <tr class="hover:bg-white/40 transition-colors">
+                                            <td class="px-6 py-4">
+                                                <p class="font-black text-tulisan uppercase tracking-tight">{{ $item->pelanggan->namapel }}</p>
+                                                <p class="text-[9px] text-gray-400 font-bold">{{ $item->produk->nama_layanan }}</p>
                                             </td>
-                                            <td class="px-4 py-2 text-right font-bold text-sudah">{{ $item->estimasi_selesai->format('d/m') }}</td>
+                                            <td class="px-6 py-4 text-right">
+                                                <span class="bg-sudah/10 text-sudah px-2 py-1 rounded-lg font-black text-[9px]">{{ $item->estimasi_selesai->format('d/m') }}</span>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="2" class="px-4 py-8 text-center text-gray-400 italic">Tidak ada proses</td>
+                                            <td colspan="2" class="px-6 py-12 text-center text-gray-400 italic">No active process</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -111,112 +117,114 @@
                         </div>
                     </div>
 
-                    <!-- Placeholder Box -->
-                    <div class="glass rounded-3xl shadow-sm border border-white/20 p-8 flex flex-col items-center justify-center text-gray-300 border-dashed border-2 opacity-50 min-h-[150px]">
-                        <i class="fas fa-plus-circle text-3xl mb-3"></i>
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em]">Add Widget</p>
+                    <!-- Block 1-2: Business Insights -->
+                    <div class="glass rounded-[2.5rem] shadow-sm border border-white/30 p-8 bg-gradient-to-br from-navbar1/10 to-transparent">
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="font-black text-tulisan text-[10px] uppercase tracking-[0.2em]">System Status</h3>
+                            <div class="flex gap-1">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sudah animate-pulse"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-sudah/30"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-end mb-2">
+                                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Efficiency</p>
+                                    <p class="text-xs font-black text-sudah">85%</p>
+                                </div>
+                                <div class="w-full bg-white/30 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-sudah h-full rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="bg-white/40 p-4 rounded-3xl border border-white/50">
+                                    <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Queue</p>
+                                    <p class="text-sm font-black text-tulisan">{{ count($proses) }} Items</p>
+                                </div>
+                                <div class="bg-white/40 p-4 rounded-3xl border border-white/50">
+                                    <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Health</p>
+                                    <p class="text-sm font-black text-sudah">Optimal</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Column 2: Cash Flow -->
-                <div class="space-y-6">
-                    <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20 h-fit">
-                        <div class="bg-navbar1/10 px-4 py-2 border-b border-white/10 flex justify-between items-center">
-                            <h3 class="font-bold text-navbar1 text-[10px] uppercase tracking-wider flex items-center gap-2">
+                <!-- Column 2: Tall (1 block) -->
+                <div class="h-full">
+                    <!-- Block 2-1: Arus Kas (Tall) -->
+                    <div class="glass overflow-hidden rounded-[2.5rem] shadow-sm border border-white/30 h-full bg-white/40 flex flex-col">
+                        <div class="bg-navbar1/10 px-8 py-6 border-b border-white/20 flex justify-between items-center">
+                            <h3 class="font-black text-navbar1 text-[10px] uppercase tracking-[0.2em] flex items-center gap-2">
                                 <i class="fa-solid fa-file-invoice-dollar"></i>
-                                Arus Kas
+                                Cash Flow Timeline
                             </h3>
-                            <a href="/laporan" class="text-navbar1 font-bold hover:underline text-[10px]">Semua</a>
+                            <a href="/laporan" class="text-navbar1 font-black hover:underline text-[9px] uppercase tracking-tighter">Full Report</a>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-[11px] text-left">
-                                <thead class="text-[9px] uppercase bg-white/50 text-gray-500">
-                                    <tr>
-                                        <th class="px-4 py-2 font-semibold">Sumber</th>
-                                        <th class="px-4 py-2 font-semibold text-right">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-white/10">
-                                    @forelse ($aruss->take(8) as $item)
-                                        <tr class="hover:bg-white/30 transition-colors">
-                                            <td class="px-4 py-2">
-                                                <p class="font-bold text-tulisan text-xs">{{ $item->nama }}</p>
-                                                <span class="text-[8px] px-1 bg-{{ $item->arus == 'Masuk' ? 'sudah' : 'belum' }}/10 text-{{ $item->arus == 'Masuk' ? 'sudah' : 'belum' }} font-black rounded">{{ $item->arus }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 text-right font-black text-garis">
-                                                Rp{{ number_format($item->total, 0, ',', '.') }}
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="2" class="px-4 py-8 text-center text-gray-400 italic">Belum ada transaksi</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                        <div class="flex-1 overflow-y-auto hide-scrollbar">
+                            <div class="divide-y divide-white/20">
+                                @forelse ($aruss->take(12) as $item)
+                                    <div class="px-8 py-5 hover:bg-white/40 transition-colors flex items-center justify-between">
+                                        <div>
+                                            <p class="font-black text-tulisan text-xs uppercase tracking-tight">{{ $item->nama }}</p>
+                                            <div class="flex items-center gap-2 mt-1">
+                                                <span class="text-[8px] px-2 py-0.5 bg-{{ $item->arus == 'Masuk' ? 'sudah' : 'belum' }}/10 text-{{ $item->arus == 'Masuk' ? 'sudah' : 'belum' }} font-black rounded-full uppercase tracking-tighter">{{ $item->arus }}</span>
+                                                <span class="text-[8px] text-gray-400 font-bold">{{ $item->created_at->format('H:i') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-xs font-black text-garis">Rp{{ number_format($item->total, 0, ',', '.') }}</p>
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div class="px-8 py-20 text-center text-gray-400 italic">No transactions today</div>
+                                @endforelse
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Placeholder Box -->
-                    <div class="glass rounded-3xl shadow-sm border border-white/20 p-8 flex flex-col items-center justify-center text-gray-300 border-dashed border-2 opacity-50 min-h-[150px]">
-                        <i class="fas fa-plus-circle text-3xl mb-3"></i>
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em]">Add Widget</p>
+                        <div class="p-6 bg-white/20 border-t border-white/10 text-center">
+                             <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">Operational Transparency</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Column 3: Analytics & Insights -->
-                <div class="space-y-6">
-                    <!-- Chart -->
-                    <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden">
-                        <div class="p-6">
-                            <h3 class="font-bold text-tulisan text-[10px] mb-6 uppercase tracking-wider">Revenue Stats</h3>
-                            <div class="h-40">
-                                <canvas id="revenueChart"></canvas>
-                            </div>
+                <!-- Column 3: Stacked (2 blocks) -->
+                <div class="space-y-8">
+                    <!-- Block 3-1: Revenue Statistics -->
+                    <div class="glass rounded-[2.5rem] shadow-sm border border-white/30 p-8 bg-white/40">
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="font-black text-tulisan text-[10px] uppercase tracking-[0.2em]">Revenue Stats</h3>
+                            <i class="fas fa-chart-area text-navbar1/30"></i>
+                        </div>
+                        <div class="h-44">
+                            <canvas id="revenueChart"></canvas>
                         </div>
                     </div>
 
-                    <!-- Insights -->
-                    <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden bg-gradient-to-br from-sudah/10 to-transparent">
-                        <div class="p-6 text-center">
-                            <h3 class="font-bold text-tulisan text-[10px] uppercase tracking-wider mb-4">Business Insights</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="p-3 bg-white/40 rounded-2xl border border-white/50">
-                                    <p class="text-[9px] text-gray-400 font-bold uppercase mb-1">Target</p>
-                                    <p class="text-sm font-black text-sudah">85%</p>
-                                </div>
-                                <div class="p-3 bg-white/40 rounded-2xl border border-white/50">
-                                    <p class="text-[9px] text-gray-400 font-bold uppercase mb-1">Load</p>
-                                    <p class="text-sm font-black text-belum">Normal</p>
-                                </div>
-                            </div>
+                    <!-- Block 3-2: Recent Customers -->
+                    <div class="glass rounded-[2.5rem] shadow-sm border border-white/30 overflow-hidden bg-white/40">
+                        <div class="p-8 border-b border-white/20 flex justify-between items-center">
+                            <h3 class="font-black text-tulisan text-[10px] uppercase tracking-[0.2em]">Recent Users</h3>
+                            <a href="/pelanggan" class="bg-kuning/80 text-garis px-3 py-1.5 rounded-xl text-[8px] font-black hover:bg-kuning transition-colors tracking-widest shadow-sm">EXPLORE</a>
                         </div>
-                    </div>
-
-                    <!-- Recent Customers -->
-                    <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden">
-                        <div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/40">
-                            <h3 class="font-bold text-tulisan text-[10px] uppercase tracking-wider">Recent Users</h3>
-                            <a href="/pelanggan" class="bg-kuning/80 text-garis px-2 py-1 rounded text-[8px] font-black hover:bg-kuning transition-colors">VIEW</a>
-                        </div>
-                        <div class="divide-y divide-white/10">
-                            @foreach ($pelanggan->sortByDesc('created_at')->take(3) as $pel)
-                                <div class="p-4 flex items-center gap-3 hover:bg-white/30 transition-all">
-                                    <div class="w-8 h-8 bg-garis/5 rounded-lg flex items-center justify-center text-garis/20">
+                        <div class="divide-y divide-white/20">
+                            @foreach ($pelanggan->sortByDesc('created_at')->take(4) as $pel)
+                                <div class="px-8 py-4 flex items-center gap-4 hover:bg-white/40 transition-all cursor-pointer">
+                                    <div class="w-10 h-10 bg-garis/5 rounded-2xl flex items-center justify-center text-garis/20 border border-white/50">
                                         <i class="fas fa-user text-xs"></i>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="text-[11px] font-bold text-tulisan truncate">{{ $pel->namapel }}</p>
-                                        <p class="text-[9px] text-gray-400">{{ $pel->kontak }}</p>
+                                        <p class="text-[11px] font-black text-tulisan truncate uppercase tracking-tighter">{{ $pel->namapel }}</p>
+                                        <p class="text-[9px] text-gray-400 font-bold">{{ $pel->kontak }}</p>
                                     </div>
-                                    <div class="text-right text-[10px] font-black text-sudah">
-                                        {{ count($pel->orders ?? []) }} Trx
+                                    <div class="text-right">
+                                        <div class="bg-sudah/10 text-sudah px-2 py-1 rounded-lg font-black text-[9px]">{{ count($pel->orders ?? []) }}</div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
