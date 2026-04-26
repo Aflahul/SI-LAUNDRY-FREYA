@@ -1,71 +1,69 @@
-<section id="laundrycare" class="bg-latar shadow-2xl inset-y w-screen  ">
-    <div class="container py-3 max-w-screen-xl items-center justify-between m-0 sm:mx-auto px-3 sm:px-7 h-fit ">
-        <div class="max-w-screen ">
-            <p class="py-2 font-semibold text-2xl ">LaundryCare</p>
-            <p class="py-1 font-medium  ">Menyajikan informasi tips & trick seputar laundry.
-            <div class="flex place-content-start place-items-center pt-3 gap-5 text-white ">
-                <div id="panahkiri" class="scroll-arrow left text-gray-200 hover:text-sudah hidden lg:block   ">
-                    <i class="fa-solid fa-chevron-left fa-2xl"></i>
-                </div>
-
-
-                <div id="cardartikel"
-                    class="flex justify-between gap-5 overflow-x-auto overscroll-none py-5 max-w-screen font-serif  drop-shadow-2xl inset-y hide-scrollbar">
-                    @foreach ($artikel as $data)
-                        <a href="#"
-                            class="min-w-[18rem] max-w-[18rem] hover:backdrop-brightness-50 hover:border-blue-600 hover:mt-2 hover:-mb-2 bg-latar border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 article-link"
-                            data-title="{{ $data->judul }}" data-date="{{ $data->created_at }}"
-                            data-content="{{ html_entity_decode($data->Isi) }}">
-                            <div id="gambar">
-                                @if ($data->foto)
-                                    <img class=" min-w-[18rem] max-w-[18rem] rounded-t-lg max-h-32 min-h-32"
-                                        src="{{ asset('storage/' . $data->foto) }}" alt="logo">
-                                @else
-                                    <img class=" min-w-[18rem] max-w-[18rem] rounded-t-lg max-h-32 min-h-32 "
-                                        src="{{ asset('assets/img/default-img.jpg') }}" alt="default logo">
-                                @endif
-                            </div>
-                            <div class="px-5 pb-2 text-black">
-                                <p id="judul"
-                                    class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                    {{ $data->judul }}</p>
-                                <p id="tanggal" class="mb-1 text-[9px] font-light font-italic ">
-                                    {{ $data->created_at }}</p>
-                                <p id="Isi">{!! Str::limit(html_entity_decode($data->Isi), 150) !!}</p>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-                <div id="panahkanan" class="scroll-arrow right text-gray-200 hover:text-sudah hidden lg:block  ">
-                    <i class="fa-solid fa-chevron-right fa-2xl object-cover"></i>
-                </div>
+<section id="laundrycare" class="py-24 bg-latar">
+    <div class="container max-w-screen-xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6">
+            <div class="max-w-2xl space-y-4">
+                <h2 class="text-4xl lg:text-5xl font-black text-garis tracking-tight">Laundry Care</h2>
+                <p class="text-gray-500 text-lg">Tips & trik seputar perawatan pakaian agar tetap awet dan bersih maksimal.</p>
+            </div>
+            <div class="flex gap-4">
+                <button id="panahkiri" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-sudah hover:border-sudah transition-all">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button id="panahkanan" class="w-12 h-12 rounded-full bg-sudah flex items-center justify-center text-white hover:scale-110 transition-all shadow-lg shadow-sudah/20">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
-    </div>
-    <!-- Komponen Modal -->
-    <div id="modal"
-        class="fixed inset-0 z-10 flex justify-center  items-center bg-black bg-opacity-50 hidden font-serif">
-        <div
-            class="bg-latar p-8 rounded-lg shadow-lg  w-screen max-w-[80rem] sm:min-w-[50rem] h-full sm:max-h-[36rem] overflow-y-auto">
-            <!-- Konten Modal -->
 
-            <p id="modalTitle" class="text-2xl font-semibold mb-4 "></p>
-            <p id="modalDate" class="text-xs mb-2"></p>
-            <div id="modalImage" class="mb-4 flex items-center justify-center">
-                <img src="" alt="Modal Image"
-                    class=" max-w-[40] overflow-y-hidden object-top object-cover max-h-[20rem] rounded-lg">
-            </div>
-            <div id="modalContent"></div>
-
-            <!-- Tombol Tutup -->
-            <button id="modalClose" class="mt-4 py-2 px-4 bg-gray-800 text-white rounded-lg">Tutup</button>
+        <div id="cardartikel" class="flex gap-8 overflow-x-auto pb-12 hide-scrollbar snap-x">
+            @foreach ($artikel as $data)
+                <div class="snap-center">
+                    <a href="#" class="block min-w-[20rem] max-w-[20rem] bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group article-link"
+                        data-title="{{ $data->judul }}" data-date="{{ $data->created_at->format('d M Y') }}"
+                        data-content="{{ html_entity_decode($data->Isi) }}">
+                        <div class="relative h-48 overflow-hidden">
+                            @if ($data->foto)
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset('storage/' . $data->foto) }}" alt="{{ $data->judul }}">
+                            @else
+                                <img class="w-full h-full object-cover" src="{{ asset('assets/img/default-img.jpg') }}" alt="default">
+                            @endif
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-sudah shadow-sm">Tips</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">{{ $data->created_at->format('d M Y') }}</p>
+                            <h4 class="text-xl font-bold text-garis mb-3 line-clamp-2 group-hover:text-sudah transition-colors">{{ $data->judul }}</h4>
+                            <div class="text-sm text-gray-500 line-clamp-3 leading-relaxed mb-6">
+                                {!! Str::limit(strip_tags(html_entity_decode($data->Isi)), 100) !!}
+                            </div>
+                            <div class="flex items-center text-sudah font-bold text-xs uppercase tracking-widest gap-2">
+                                Baca Selengkapnya
+                                <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 
-
-
-
-
+    <!-- Modern Modal -->
+    <div id="modal" class="fixed inset-0 z-[60] flex justify-center items-center p-4 bg-garis/80 backdrop-blur-sm hidden animate-fade-in">
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-[3rem] shadow-2xl overflow-hidden flex flex-col animate-scale-up">
+            <div class="relative h-64 sm:h-80 w-full shrink-0">
+                <img id="modalImage" src="" alt="" class="w-full h-full object-cover">
+                <button id="modalClose" class="absolute top-6 right-6 w-12 h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-8 lg:p-12 overflow-y-auto">
+                <p id="modalDate" class="text-xs font-black uppercase tracking-widest text-sudah mb-4"></p>
+                <h3 id="modalTitle" class="text-3xl lg:text-4xl font-black text-garis mb-8 tracking-tight"></h3>
+                <div id="modalContent" class="prose prose-lg max-w-none text-gray-600 leading-relaxed"></div>
+            </div>
+        </div>
+    </div>
 </section>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

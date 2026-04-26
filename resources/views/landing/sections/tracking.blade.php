@@ -1,98 +1,98 @@
-<section id="tracking" class="bg-kuningpudar w-screen h-1/2">
-    <div class="container max-w-screen-xl items-center justify-between mx-auto px-3 sm:px-7 h-fit">
-        <p class="py-2 font-semibold text-2xl">Tracking</p>
-        <p class="py-1 text-lg">Cek Status Laundry anda disini</p>
-        <form class="py-3 pt-1 flex flex-col items-center" action="{{ route('landing.search-invoice') }}" method="POST">
-            @csrf
-            <div class="pl-3 flex items-center bg-latar border border-1 w-full rounded-lg text-black">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="default-search" name="invoice_number"
-                    class="w-full p-2 text-sm border border-white text-gray-900"
-                    placeholder="Masukkan Kode Invoice Anda disini.." required>
-                <button type="submit" id="searchButton"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-            </div>
-        </form>
+<section id="tracking" class="py-24 bg-white relative">
+    <div class="container max-w-screen-xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="text-4xl font-black text-garis mb-4 tracking-tight">Tracking Status</h2>
+            <p class="text-gray-500">Masukkan kode invoice Anda untuk melihat status pengerjaan laundry secara real-time.</p>
+        </div>
 
-        <div id="stepper" class="container w-screen pb-5 md:px-10 mx-auto h-fit max-w-full mt-2">
-            @if ($error)
-                <div class="bg-red-500 text-white p-4 rounded">
-                    {{ $error }}
+        <div class="max-w-2xl mx-auto">
+            <form action="{{ route('landing.search-invoice') }}" method="POST" class="mb-12">
+                @csrf
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none text-gray-400 group-focus-within:text-sudah transition-colors">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="search" name="invoice_number" required
+                        class="block w-full pl-14 pr-32 py-5 bg-latar border-0 rounded-[2rem] text-garis placeholder-gray-400 focus:ring-4 focus:ring-sudah/10 transition-all shadow-inner"
+                        placeholder="Contoh: INV-2023001">
+                    <button type="submit" 
+                        class="absolute right-3 top-2.5 bottom-2.5 px-8 bg-sudah text-white font-bold rounded-[1.5rem] hover:bg-opacity-90 transition-all shadow-lg shadow-sudah/20 active:scale-95">
+                        Lacak
+                    </button>
                 </div>
-            @endif
-            @if ($status)
-                <p class="text-center text-lg font-bold pb-8">Status Laundry Anda</p>
-                <ol class="flex items-center justify-center w-creen">
-                    <!-- Tahap 1: "Sudah di Input" selalu ditampilkan dan dianggap selesai -->
-                    <li class="w-full">
-                        <div class="flex justify-center flex-col">
-                            <div
-                                class="flex w-full items-baseline text-blue-600  after:content-[''] after:w-full after:h-1 after:border-b after:border-green-500 after:border-4 after:inline-block ">
-                                <div class="flex flex-col justify-center">
-                                    <span
-                                        class="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full lg:h-12 lg:w-12  shrink-0">
-                                        <i class="fa-solid fa-check text-white"></i>
+            </form>
+
+            <div id="stepper" class="animate-fade-in-up">
+                @if ($error)
+                    <div class="p-6 bg-red-50 border border-red-100 rounded-3xl text-red-600 text-center animate-shake flex items-center justify-center gap-3">
+                        <i class="fas fa-exclamation-circle text-xl"></i>
+                        <span class="font-bold">{{ $error }}</span>
+                    </div>
+                @endif
+
+                @if ($status)
+                    <div class="glass p-8 lg:p-12 rounded-[3rem] border border-gray-100 shadow-xl">
+                        <h3 class="text-center text-xl font-black text-garis mb-12">Detail Status Pesanan</h3>
+                        
+                        <div class="relative">
+                            <!-- Progress Line Background -->
+                            <div class="absolute top-6 left-0 w-full h-1 bg-gray-100 -z-10"></div>
+                            
+                            <div class="flex justify-between relative z-10">
+                                <!-- Step 1: Input -->
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-200">
+                                        <i class="fas fa-check text-white"></i>
+                                    </div>
+                                    <span class="text-xs font-black uppercase text-garis">Input</span>
+                                </div>
+
+                                <!-- Step 2: Proses -->
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-12 h-12 {{ $status['status'] === 'Selesai Dicuci' ? 'bg-green-500 shadow-green-200' : 'bg-sudah shadow-sudah/20' }} rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas {{ $status['status'] === 'Selesai Dicuci' ? 'fa-check' : 'fa-spinner fa-spin' }} text-white"></i>
+                                    </div>
+                                    <span class="text-xs font-black uppercase text-garis">
+                                        {{ $status['status'] === 'Selesai Dicuci' ? 'Selesai' : 'Dicuci' }}
                                     </span>
                                 </div>
-                            </div>
-                            <span class=" min-w-[10rem] font-medium whitespace-nowrap">Input</span>
-                        </div>
-                    </li>
-                    <!-- Tahap 2: "Sedang Cuci" atau "Selesai Cuci" -->
-                    <li class="w-full">
-                        <div class="flex flex-col ">
-                            <div
-                                class="flex w-full items-baseline text-blue-600  after:content-[''] after:w-full after:h-1 after:border-b after:{{ $status['status'] === 'Selesai Dicuci' ? 'border-green-500' : 'border-gray-200' }} after:border-4 after:inline-block ">
-                                <div class="flex flex-col justify-center">
-                                    <span
-                                        class="flex items-center justify-center w-10 h-10 {{ $status['status'] === 'Selesai Dicuci' ? 'bg-green-500' : 'bg-gray-200' }}  rounded-full lg:h-12 lg:w-12  shrink-0">
-                                        <i
-                                            class="fa-solid {{ $status['status'] === 'Selesai Dicuci' ? 'fa-check' : 'fa-x' }} text-white"></i>
-                                    </span>
+
+                                <!-- Step 3: Pembayaran -->
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-12 h-12 {{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'bg-green-500 shadow-green-200' : 'bg-gray-100' }} rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas {{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'fa-check' : 'fa-wallet text-gray-300' }} text-white"></i>
+                                    </div>
+                                    <span class="text-xs font-black uppercase text-garis">Pembayaran</span>
+                                </div>
+
+                                <!-- Step 4: Selesai -->
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-12 h-12 {{ ($status['status'] === 'Selesai Dicuci' && $status['status_pembayaran'] === 'Sudah Bayar') ? 'bg-kuning shadow-kuning/20' : 'bg-gray-100' }} rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas {{ ($status['status'] === 'Selesai Dicuci' && $status['status_pembayaran'] === 'Sudah Bayar') ? 'fa-star text-garis' : 'fa-flag text-gray-300' }} text-white"></i>
+                                    </div>
+                                    <span class="text-xs font-black uppercase text-garis">Selesai</span>
                                 </div>
                             </div>
-                            <span
-                                class="min-w-[10rem] font-medium whitespace-nowrap">{{ $status['status'] === 'Selesai Dicuci' ? 'Selesai Dicuci' : 'Sedang Dicuci' }}</span>
                         </div>
-                    </li>
 
-                    <!-- Tahap 3: "Sudah Dibayar" atau "Belum Dibayar" -->
-                    <li class="w-full">
-                        <div class="flex justify-center flex-col">
-                            <div
-                                class="flex w-full items-baseline text-blue-600  after:content-[''] after:w-full after:h-1 after:border-b after:{{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'border-green-500' : 'border-gray-200' }} after:border-4 after:inline-block ">
-                                <div class="flex flex-col justify-center">
-                                    <span
-                                        class="flex items-center justify-center w-10 h-10 {{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'bg-green-500' : 'bg-gray-200' }} rounded-full lg:h-12 lg:w-12  shrink-0">
-                                        <i
-                                            class="fa-solid {{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'fa-check' : 'fa-x' }} text-white"></i>
-                                    </span>
+                        <div class="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-sudah/10 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-file-invoice text-sudah"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest">Status Invoice</p>
+                                    <p class="font-bold text-garis">Terverifikasi</p>
                                 </div>
                             </div>
-                            <span
-                                class="min-w-[10rem] font-medium whitespace-nowrap">{{ $status['status_pembayaran'] === 'Sudah Bayar' ? 'Sudah Dibayar' : 'Belum Dibayar' }}</span>
-                        </div>
-                    </li>
-
-                    <!-- Tahap 4: "Selesai" atau "Proses" -->
-                    <li class="">
-                        <div class="flex justify-center flex-col">
-                            {{-- <div class="flex w-full items-baseline text-blue-600 "> --}}
-                            <div class="flex flex-col justify-center">
-                                <span
-                                    class="flex items-center justify-center w-10 h-10 {{ $status['status'] === 'Selesai Dicuci' && $status['status_pembayaran'] === 'Sudah Bayar' ? 'bg-green-500' : 'bg-gray-200' }}  rounded-full lg:h-12 lg:w-12  shrink-0">
-                                    <i
-                                        class="fa-solid {{ $status['status'] === 'Selesai Dicuci' && $status['status_pembayaran'] === 'Sudah Bayar' ? 'fa-check' : 'fa-x' }} text-white"></i>
-                                </span>
-
-                                {{-- </div> --}}
-                                <span
-                                    class="min-w-fit font-medium whitespace-nowrap">{{ $status['status'] === 'Selesai   Dicuci' && $status['status_pembayaran'] === 'Sudah Dibayar' ? 'Selesai' : 'Selesai' }}</span>
+                            <div class="text-right">
+                                <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest">Pembaruan Terakhir</p>
+                                <p class="font-bold text-garis">{{ now()->format('d M Y, H:i') }}</p>
                             </div>
                         </div>
-                    </li>
-                </ol>
-            @endif
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 </section>

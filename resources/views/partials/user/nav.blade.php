@@ -1,59 +1,54 @@
-<nav class="bg-kuningpudar fixed top-0 left-0 w-screen z-50 drop-shadow">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-3 sm:px-7 py-2">
-        <div class="flex items-end ">
-            <div class="">
-                <a href="/" class="flex items-center">
+<div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <nav class="glass max-w-screen-xl w-full rounded-2xl shadow-lg border border-white/30 overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between mx-auto px-6 py-3">
+            <div class="flex items-center gap-4">
+                <a href="/" class="flex items-center group">
                     @if ($profil->logo)
-                        <img class="h-8 mr-3" src="{{ 'data:image/jpeg;base64,' . base64_encode($profil->logo) }}"
-                            alt="logo">
+                        <img class="h-10 w-auto rounded-lg shadow-md transition-transform group-hover:scale-110" src="{{ 'data:image/jpeg;base64,' . base64_encode($profil->logo) }}" alt="logo">
                     @else
-                        <img class="h-8 mr-3" src="{{ asset('assets/img/default-logo.jpg') }}" alt="default logo">
+                        <img class="h-10 w-auto rounded-lg" src="{{ asset('assets/img/default-logo.jpg') }}" alt="default logo">
                     @endif
                 </a>
+                <div class="hidden sm:block">
+                    <p class="text-xs font-black text-garis uppercase tracking-widest opacity-60">Freya Laundry</p>
+                    <div class="text-[10px] font-medium text-gray-500 italic">
+                        {!! html_entity_decode($profil->tagline) !!}
+                    </div>
+                </div>
             </div>
-            <div class="font-mono">{!! html_entity_decode($profil->tagline) !!}</div>
+
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-xl md:hidden hover:bg-white/20 transition-all">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="flex flex-col md:flex-row gap-1 mt-4 md:mt-0">
+                    @php
+                        $menus = [
+                            ['href' => '#home', 'label' => 'Home'],
+                            ['href' => '#paket', 'label' => 'Layanan'],
+                            ['href' => '#laundrycare', 'label' => 'Care'],
+                            ['href' => '#tracking', 'label' => 'Tracking'],
+                            ['href' => '#lokasi', 'label' => 'Lokasi'],
+                            ['href' => '#about', 'label' => 'Tentang'],
+                        ];
+                    @endphp
+                    @foreach($menus as $menu)
+                        <li>
+                            <a href="{{ $menu['href'] }}"
+                                class="px-4 py-2 text-sm font-bold text-garis hover:text-sudah transition-colors rounded-xl hover:bg-white/30 block">
+                                {{ $menu['label'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                    <li class="ml-4 pl-4 border-l border-gray-200">
+                        <a href="/login" class="px-5 py-2 text-sm font-bold bg-garis text-white rounded-xl hover:bg-opacity-90 transition-all shadow-lg shadow-garis/20 block">
+                            Login Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <button data-collapse-toggle="navbar-default" type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
-        </button>
-        <div class="hidden w-screen md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-8 md:mt-0 ">
-                <li>
-                    <a href="#home"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                        Home</a>
-                </li>
-                <li>
-                    <a href="#paket"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Produk
-                        & Layanan</a>
-                </li>
-                <li>
-                    <a href="#laundrycare"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Laundry
-                        Care</a>
-                </li>
-                <li>
-                    <a href="#tracking"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tracking</a>
-                </li>
-                <li>
-                    <a href="#lokasi"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Lokasi</a>
-                </li>
-                <li>
-                    <a href="#about"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tentang
-                        Kami</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
+</div>

@@ -14,7 +14,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-mono font-thin bg-latar">
+<body class="font-sans antialiased bg-latar scroll-smooth">
     <header>
         @include('partials/user/nav')
     </header>

@@ -4,58 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="asset/css/fontawesome.css" rel="stylesheet">
+    <title>Freya Laundry | Login</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="{{ asset('asset/css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/css/all.css') }}" rel="stylesheet">
-    <title>Login</title>
 </head>
 
-<body class="bg-cover bg-center bg-blur-20" style="background-image: url('/asset/img/freya/1copy.jpeg');">
-
-    @if (session('error'))
-        <div class="text-red-500">{{ session('error') }}</div>
-    @endif
-    <div class="flex h-screen">
-        <div class="m-auto">
-            <div class="bg-kuningpudar rounded-lg object-center text-center">
-                <div class="px-32 py-2 flex justify-center rounded-t-lg items-center bg-kuning">
-                    <img class="h-20" src="asset/img/logo.jpg" alt="logo">
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center p-4" style="background-image: linear-gradient(rgba(7, 3, 26, 0.6), rgba(7, 3, 26, 0.6)), url('/asset/img/freya/1copy.jpeg');">
+    
+    <div class="w-full max-w-md animate-fade-in-up">
+        <div class="glass p-8 rounded-[2.5rem] shadow-2xl border border-white/20">
+            <!-- Logo Section -->
+            <div class="flex justify-center mb-8">
+                <div class="p-4 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-inner">
+                    <img class="h-20 w-auto rounded-2xl shadow-lg" src="asset/img/logo.jpg" alt="logo">
                 </div>
-                <div class="py-3 center shadow-lg rounded-xl">
-                    <h3 class="py-3 text-2xl font-semibold">Hello, Freyers!</h3>
-                    <div class="text-center pt-3">
-                        @if ($errors->has('loginError'))
-                            <div class="alert alert-danger border hover:bg-red-500 hover:text-white border-red-500 p-1 w-fit mx-auto mb-4 text-red-500 rounded flex justify-center items-center text-center px-5 py-2">
-                                {{ $errors->first('loginError') }}
-                            </div>
-                        @endif
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="px-10 py-0 flex flex-col gap-3  justify-center">
-                                <div class="relative focus:outline-none focus:border-2  text-white ">
-                                    <span class="absolute top-1/2 transform -translate-y-1/2 bg-belum  rounded-l-2xl">
-                                        <i class="p-2 fas fa-user"></i>
-                                    </span>
-                                    <input type="text" placeholder="Masukkan Nama Akun" name="username"
-                                        class="p-1.5 pl-10 text-sm rounded-2xl bg-white  text-black border-0 shadow-md  w-full" />
-                                </div>
-                                <div class="relative focus:outline-none focus:border-2  text-white">
-                                    <span class="absolute top-1/2 transform -translate-y-1/2 bg-belum  rounded-l-2xl">
-                                        <i class="p-2 fas fa-lock"></i>
-                                    </span>
-                                    <input type="password" name="password" placeholder="Masukkan Kata sandi"
-                                        class="p-1.5 pl-10 text-sm rounded-2xl bg-white text-black border-0 shadow-md  w-full" />
-                                </div>
-                            </div>
-                            <button type="submit"
-                                class="bg-belum p-1 px-5 text-white  rounded-2xl border-cyan-700 focus:ring-2 m-4">Masuk</button>
-                        </form>
+            </div>
+
+            <!-- Welcome Text -->
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-black text-white tracking-tight mb-2">Hello, Freyers!</h3>
+                <p class="text-white/60 text-sm">Please enter your credentials to continue</p>
+            </div>
+
+            <!-- Error Messages -->
+            @if ($errors->has('loginError'))
+                <div class="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-2xl text-red-200 text-sm text-center backdrop-blur-sm animate-shake">
+                    {{ $errors->first('loginError') }}
+                </div>
+            @endif
+
+            <!-- Login Form -->
+            <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                @csrf
+                
+                <div class="space-y-4">
+                    <!-- Username -->
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-kuning transition-colors">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" placeholder="Username" name="username" required
+                            class="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-kuning/50 focus:bg-white/20 transition-all duration-300" />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-kuning transition-colors">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-kuning/50 focus:bg-white/20 transition-all duration-300" />
                     </div>
                 </div>
+
+                <button type="submit"
+                    class="w-full py-4 bg-kuning hover:bg-yellow-400 text-garis font-black rounded-2xl shadow-xl shadow-kuning/20 transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest text-sm">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="mt-8 text-center">
+                <p class="text-white/40 text-xs">© {{ date('Y') }} Freya Laundry Management System</p>
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
 </body>
 
 </html>

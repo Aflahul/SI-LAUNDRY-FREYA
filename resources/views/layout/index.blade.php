@@ -20,8 +20,9 @@
 
 </head>
 
-<body class="bg-latar text-sm">
-    @include('partials/admin/navbar')
+<body class="bg-latar text-sm font-sans antialiased">
+    <div class="pt-24 min-h-screen">
+        @include('partials/admin/navbar')
 
     @if (Auth::check())
         @if (Auth::user()->level === 'admin')
@@ -31,6 +32,7 @@
         @endif
     @endif
     @yield('content')
+    </div>
     <script>
         // Mengatur zona waktu JavaScript ke UTC+8
         Intl.DateTimeFormat().resolvedOptions().timeZone = 'UTC+8';

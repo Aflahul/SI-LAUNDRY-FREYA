@@ -14,210 +14,176 @@
             <p class="pb-4  ">Hi! <b><i>{{ ucfirst(auth()->user()->username) }},</i></b> Selamat datang</p>
             <hr>
         </div>
-        <div class="px-4 flex gap-3 mt-3 ">
-            <div class="w-2/3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mb-3">
-                    <div class="overflow-x-auto bg-latar rounded-[8px] border-t drop-shadow-lg">
-                        <div class="flex flex-col justify-between p-2 md:flex-row">
-                            <div class="w-full p-3 md:w-auto bg-kuning md:rounded-[3px]">
-                                <div class="w-11 py-3 flex justify-center text-garis mx-auto">
-                                    <div>
-                                        <i class="fa-solid fa-users fa-2x"></i>
-                                    </div>
-                                </div>
+        <div class="px-4 flex gap-5 mt-6">
+            <div class="w-2/3 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Stat Card: Pelanggan -->
+                    <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-center justify-between">
+                            <div class="p-3 bg-kuning/20 rounded-xl">
+                                <i class="fa-solid fa-users text-2xl text-kuning"></i>
                             </div>
-                            <div class="text-center flex flex-col justify-between md:text-right">
-                                <h5 class="text-xl font-bold tracking-tight pt-1">{{ count($pelanggan) }}</h5>
-                                <p class="">Pelanggan</p>
+                            <div class="text-right">
+                                <h5 class="text-2xl font-bold text-tulisan">{{ count($pelanggan) }}</h5>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Pelanggan</p>
                             </div>
                         </div>
                     </div>
-                    <div class="overflow-x-auto bg-latar rounded-[8px] border-t drop-shadow-lg">
-                        <div class="flex flex-col justify-between p-2 md:flex-row">
-                            <div class="w-full p-3 md:w-auto bg-kuning md:rounded-[3px]">
-                                <div class="w-11 py-3 flex justify-center text-garis mx-auto">
-                                    <div>
-                                        <i class="fa-solid fa-tags fa-2x "></i>
-                                    </div>
-                                </div>
+
+                    <!-- Stat Card: Layanan -->
+                    <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-center justify-between">
+                            <div class="p-3 bg-sudah/20 rounded-xl">
+                                <i class="fa-solid fa-tags text-2xl text-sudah"></i>
                             </div>
-                            <div class="text-center flex flex-col justify-between md:text-right">
-                                <h5 class="text-xl font-bold tracking-tight pt-1">{{ count($produk) }}</h5>
-                                <p class="">Layanan</p>
+                            <div class="text-right">
+                                <h5 class="text-2xl font-bold text-tulisan">{{ count($produk) }}</h5>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Layanan</p>
                             </div>
                         </div>
                     </div>
-                    <div class="overflow-x-auto bg-latar rounded-[8px] border-t drop-shadow-lg ">
-                        <div class="flex flex-col justify-between p-2 md:flex-row">
-                            <div class="w-full p-3 md:w-auto bg-kuning md:rounded-[3px]">
-                                <div class="w-11 py-3 flex justify-center text-garis mx-auto">
-                                    <div>
-                                        <img src="asset\icn\aa.png" class="min-h-[2rem] max-h-[2rem]" alt="">
-                                    </div>
-                                </div>
+
+                    <!-- Stat Card: Proses -->
+                    <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-center justify-between">
+                            <div class="p-3 bg-sedang/20 rounded-xl">
+                                <i class="fa-solid fa-spinner animate-spin-slow text-2xl text-sedang"></i>
                             </div>
-                            <div class="text-center flex flex-col justify-between md:text-right">
-                                <h5 class="text-xl font-bold tracking-tight pt-1">{{ count($proses) }}</h5>
-                                <p class="">Proses</p>
+                            <div class="text-right">
+                                <h5 class="text-2xl font-bold text-tulisan">{{ count($proses) }}</h5>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Proses</p>
                             </div>
                         </div>
                     </div>
-                    <div class="overflow-x-auto bg-latar rounded-[8px] border-t drop-shadow-lg">
-                        <div class="flex flex-col justify-between p-2 md:flex-row">
-                            <div class="w-full p-3 md:w-auto bg-kuning md:rounded-[3px]">
-                                <div class="w-11 py-3 flex justify-center text-garis mx-auto">
-                                    <div>
-                                        <i class="fa-solid fa-comments-dollar fa-2x"></i>
-                                    </div>
-                                </div>
+
+                    <!-- Stat Card: Profit -->
+                    <div class="glass p-4 rounded-2xl shadow-sm border border-white/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-center justify-between">
+                            <div class="p-3 bg-navbar1/20 rounded-xl">
+                                <i class="fa-solid fa-comments-dollar text-2xl text-navbar1"></i>
                             </div>
-                            <div class="text-center flex flex-col justify-between md:text-right">
-                                <h5 class="text-xl font-bold tracking-tight pt-1">
+                            <div class="text-right">
+                                <h5 class="text-xl font-bold text-tulisan">
                                     {{ number_format(optional($arus)->saldo ?? 0, 0, ',', '.') }}
                                 </h5>
-                                <p class="">Profit</p>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Profit</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="drop-shadow-lg overflow-x-auto mb-3">
-                    <div class="bg-latar  rounded-[8px]">
+                <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20">
+                    <div class="bg-sudah/10 px-6 py-4 border-b border-white/10">
+                        <h3 class="font-bold text-sudah flex items-center gap-2">
+                            <i class="fa-solid fa-spinner animate-spin-slow"></i>
+                            Sedang Proses
+                        </h3>
+                    </div>
+                    <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left">
-                            <thead>
-                                <div
-                                    class="px-4 pt-2 pb-1 shadow uppercase text-center items-center bg-latar border-t-4 border-sudah rounded-t-[8px]">
-                                    <p class="font-bold text-center">Sedang Proses</p>
-                                </div>
-                                <tr class="pt-1 rounded-t-[8px]">
-                                    <th scope="col" class="pt-2 px-2">Pelanggan</th>
-                                    <th scope="col" class="pt-2 text-center px-2">Jenis Laundry</th>
-                                    <th scope="col" class="pt-2 text-center px-2">Masuk</th>
-                                    <th scope="col" class="pt-2 text-right px-2">Estimasi</th>
+                            <thead class="text-xs uppercase bg-white/50 text-gray-500">
+                                <tr>
+                                    <th class="px-6 py-3 font-semibold">Pelanggan</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Jenis Laundry</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Masuk</th>
+                                    <th class="px-6 py-3 font-semibold text-right">Estimasi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="divide-y divide-white/10">
                                 @foreach ($proses as $item)
-                                    <tr class=" odd:bg-slate-200 even:bg-latar ">
-                                        <td class="px-2 text-left ">
-                                            <p class=" ">{{ $item->pelanggan->namapel }}</p>
-                                        </td>
-                                        <td class="px-2 text-center ">
-                                            <p class="">{{ $item->produk->nama_layanan }}</p>
-                                        </td>
-                                        <td class="px-2 text-center ">
-                                            <p class=" ">{{ $item->created_at->format('d/m/Y') }}</p>
-                                        </td>
-                                        <td class="px-2 text-right ">
-                                            <p class="">{{ $item->estimasi_selesai->format('d/m/Y') }}</p>
-                                        </td>
+                                    <tr class="hover:bg-white/30 transition-colors">
+                                        <td class="px-6 py-4 font-medium">{{ $item->pelanggan->namapel }}</td>
+                                        <td class="px-6 py-4 text-center">{{ $item->produk->nama_layanan }}</td>
+                                        <td class="px-6 py-4 text-center text-gray-500">{{ $item->created_at->format('d/m/Y') }}</td>
+                                        <td class="px-6 py-4 text-right font-semibold text-sudah">{{ $item->estimasi_selesai->format('d/m/Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4"
-                                        class="hover:bg-kuning text-center text-garis drop-shadow-lg font-medium rounded-b-[8px] text-sm px-2 py-1">
-                                        <a href="/laporan" class="" type="button">Lihat Semua</a>
-                                    </td>
-                                </tr>
-                            </tfoot>
                         </table>
-
+                    </div>
+                    <div class="p-3 bg-white/30 text-center border-t border-white/10">
+                        <a href="/laporan" class="text-sudah font-bold hover:underline text-xs">Lihat Semua</a>
                     </div>
                 </div>
-                <div class="drop-shadow-lg overflow-x-auto">
-                    <div class="bg-latar  rounded-[8px]">
+                <div class="glass overflow-hidden rounded-2xl shadow-sm border border-white/20">
+                    <div class="bg-navbar1/10 px-6 py-4 border-b border-white/10">
+                        <h3 class="font-bold text-navbar1 flex items-center gap-2">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                            Arus Kas Terakhir
+                        </h3>
+                    </div>
+                    <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left">
-                            <thead>
-                                <div
-                                    class="px-4 pt-2 pb-1 shadow uppercase text-center items-center bg-latar border-t-4 border-sudah rounded-t-[8px]">
-                                    <p class="font-bold text-center">Arus Kas terakhir</p>
-                                </div>
-                                <tr class="pt-1 rounded-t-[8px]">
-                                    <th scope="col" class="px-2 pt-2">
-                                        Kode
-                                    </th>
-                                    <th scope="col" class="px-2 pt-2 text-center">
-                                        Sumber Arus
-                                    </th>
-                                    <th scope="col" class="px-2 pt-2 text-center">
-                                        Aktivitas
-                                    </th>
-                                    <th scope="col" class="px-2 pt-2 text-center">
-                                        Total
-                                    </th>
-
+                            <thead class="text-xs uppercase bg-white/50 text-gray-500">
+                                <tr>
+                                    <th class="px-6 py-3 font-semibold">Kode</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Sumber Arus</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Aktivitas</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="divide-y divide-white/10">
                                 @foreach ($aruss as $item)
-                                    <tr class=" odd:bg-slate-200 even:bg-latar ">
-                                        <td class="px-2 w-40 text-md font-bold uppercase">
-                                            <p class="text-sudah">{{ $item->kode }}</p>
+                                    <tr class="hover:bg-white/30 transition-colors">
+                                        <td class="px-6 py-4">
+                                            <span class="text-xs font-bold uppercase text-sudah bg-sudah/10 px-2 py-1 rounded">
+                                                {{ $item->kode }}
+                                            </span>
                                         </td>
-                                        <td class="px-2 text-center  ">
-                                            <p class="">{{ $item->nama }}</p>
+                                        <td class="px-6 py-4 text-center font-medium">{{ $item->nama }}</td>
+                                        <td class="px-6 py-4 text-center">
+                                            <span class="{{ $item->arus == 'Masuk' ? 'text-sudah' : 'text-belum' }} font-bold">
+                                                {{ $item->arus }}
+                                            </span>
                                         </td>
-                                        <td class="px-2 text-center  ">
-                                            <p class="">{{ $item->arus }}</p>
+                                        <td class="px-6 py-4 text-center font-bold">
+                                            Rp. {{ number_format($item->total, 0, ',', '.') }}
                                         </td>
-                                        <td class="px-2 text-center ">
-                                            <p class="">Rp. {{ number_format($item->total, 0, ',', '.') }}</p>
-                                        </td>
-
                                     </tr>
                                 @endforeach
-
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4"
-                                        class="hover:bg-kuning text-center text-garis drop-shadow-lg font-medium rounded-b-[8px] text-sm px-2 py-1">
-                                        @if (Auth::user()->level === 'admin')
-                                            <a href="/laporan" class="" type="button">Lihat Semua</a>
-                                        @else
-                                            Level Akses hanya Admin
-                                        @endif
-                                    </td>
-                                </tr>
-                            </tfoot>
                         </table>
+                    </div>
+                    <div class="p-3 bg-white/30 text-center border-t border-white/10">
+                        @if (Auth::user()->level === 'admin')
+                            <a href="/laporan" class="text-navbar1 font-bold hover:underline text-xs">Lihat Semua</a>
+                        @else
+                            <span class="text-xs text-gray-400 italic">Akses Terbatas</span>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="w-1/3">
-                <div class=" drop-shadow-lg overflow-x-auto">
-                    <div class="bg-latar border-t-4 border-sudah rounded-[8px]">
-                        <table class="w-full text-sm text-left ">
-                            <thead>
-                                <div class="p-4 border-b-2 flex justify-between items-center ">
-                                    <h1 class="font-bold">Data Pelanggan</h1>
-                                    <a href="/pelanggan"
-                                        class="bg-kuning hover:bg-kuning drop-shadow-lg hover:text-white font-medium text-garis rounded-xl text-sm px-5 py-2">Lihat
-                                        Semua</a>
+                <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden">
+                    <div class="p-6 border-b border-white/10 flex justify-between items-center bg-white/40">
+                        <h3 class="font-bold text-tulisan">Pelanggan Baru</h3>
+                        <a href="/pelanggan" class="text-xs bg-kuning/80 hover:bg-kuning text-garis px-3 py-1 rounded-lg font-bold transition-all shadow-sm">
+                            Semua
+                        </a>
+                    </div>
+                    <div class="divide-y divide-white/10">
+                        @foreach ($pelanggan->sortByDesc('created_at')->take(8) as $pel)
+                            <div class="p-4 flex items-center gap-4 hover:bg-white/30 transition-all">
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-sudah/10 rounded-full flex items-center justify-center border border-sudah/20">
+                                        <i class="fas fa-user text-sudah text-xl"></i>
+                                    </div>
+                                    @if($pel->total_order > 5)
+                                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-kuning rounded-full border-2 border-white flex items-center justify-center">
+                                            <i class="fas fa-star text-[8px] text-white"></i>
+                                        </div>
+                                    @endif
                                 </div>
-                            </thead>
-                            <tbody>
-                                @foreach ($pelanggan->sortByDesc('created_at')->take(10) as $pel)
-                                    <tr class=" odd:bg-slate-200 even:bg-latar ">
-                                        <td class="w-8 ">
-                                            <div class="pl-4">
-                                                <i class="fas fa-user-circle fa-3x text-sudah"></i>
-                                            </div>
-                                        </td>
-                                        <td class="text-left px-2">
-                                            <p class="font-bold text-sudah  ">{{ $pel->namapel }}</p>
-                                            <p class="font-light text-xs">{{ $pel->kontak }}</p>
-                                        </td>
-                                        <td class="py-0.5 text-right pr-4">
-                                            <p class="font-medium">Total Transaksi : {{ $pel->total_order }}</p>
-                                            <p class="font-light text-xs ">{{ $pel->alamat }}</p>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-bold text-tulisan truncate">{{ $pel->namapel }}</p>
+                                    <p class="text-xs text-gray-500">{{ $pel->kontak }}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] bg-white/50 px-2 py-1 rounded-full border border-white/20 font-bold text-sudah">
+                                        {{ $pel->total_order }} Trx
+                                    </span>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
