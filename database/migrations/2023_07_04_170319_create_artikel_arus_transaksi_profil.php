@@ -22,6 +22,12 @@ return new class extends Migration
         });
         Schema::create('tb_arus', function (Blueprint $table) {
             $table->id('id_arus');
+            $table->string('kode');
+            $table->string('nama');
+            $table->string('arus');
+            $table->date('tgl');
+            $table->integer('total');
+            $table->integer('saldo');
             $table->timestamps();
         });
 

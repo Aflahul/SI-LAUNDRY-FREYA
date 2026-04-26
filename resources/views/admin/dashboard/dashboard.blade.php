@@ -73,7 +73,7 @@
                             </div>
                             <div class="text-center flex flex-col justify-between md:text-right">
                                 <h5 class="text-xl font-bold tracking-tight pt-1">
-                                    {{ ($arus->saldo < 0 ? '-' : '') . number_format(abs($arus->saldo), 0, ',', '') }}
+                                    {{ number_format(optional($arus)->saldo ?? 0, 0, ',', '.') }}
                                 </h5>
                                 <p class="">Profit</p>
                             </div>

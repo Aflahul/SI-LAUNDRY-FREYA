@@ -8,6 +8,7 @@ use App\Models\Profil;
 use App\Models\Pelanggan;
 use App\Models\Produk;
 use App\Models\Artikel;
+use App\Models\Arus;
 use Illuminate\Support\Facades\Hash;
 
 class PortfolioSeeder extends Seeder
@@ -100,6 +101,18 @@ class PortfolioSeeder extends Seeder
                 'Isi' => 'Merawat pakaian membutuhkan perhatian khusus, mulai dari cara mencuci hingga menjemur...',
                 'waktu' => now(),
                 'status' => 'Publish',
+            ]
+        );
+
+        // 6. Seed Arus (Initial Balance)
+        Arus::updateOrCreate(
+            ['kode' => 'INIT-001'],
+            [
+                'nama' => 'Saldo Awal',
+                'arus' => 'Masuk',
+                'tgl' => now(),
+                'total' => 1000000,
+                'saldo' => 1000000,
             ]
         );
     }
