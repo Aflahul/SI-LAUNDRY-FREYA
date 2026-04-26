@@ -3,12 +3,7 @@
     aria-label="Sidebar">
     <div class=" basis-5/6  ">
         <div class="pb-2 pl-2 pt-4 w-full flex flex-col items-center justify-center rounded-t-[5px]">
-            @if ($profil->logo)
-                <img class="w-32 rounded" src="{{ 'data:image/jpeg;base64,' . base64_encode($profil->logo) }}"
-                    alt="logo">
-            @else
-                <img class="w-32 rounded" src="{{ asset('assets/img/default-logo.jpg') }}" alt="default logo">
-            @endif
+            <img class="w-32 rounded" src="{{ asset('asset/img/default-logo.jpg') }}" alt="logo">
         </div>
         <div class="px-4">
             <ul class="mt-4 space-y-2 border-t border-white/10 pt-4 font-medium">

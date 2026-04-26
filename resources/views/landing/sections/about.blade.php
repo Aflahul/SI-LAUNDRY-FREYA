@@ -8,14 +8,7 @@
                     <div class="flex flex-col mb-1 md:mb-0 ">
                         <div>
                             <a href="#home" class="">
-                                @if ($profil->logo)
-                                    <img class="h-32"
-                                        src="{{ 'data:image/jpeg;base64,' . base64_encode($profil->logo) }}"
-                                        alt="logo">
-                                @else
-                                    <img class="h-32" src="{{ asset('assets/img/default-logo.jpg') }}"
-                                        alt="default logo">
-                                @endif
+                                <img class="h-32 rounded-2xl shadow-lg" src="{{ asset('asset/img/default-logo.jpg') }}" alt="logo">
                             </a>
                         </div>
                         <div class="py-1 font-medium text-lg">{!! html_entity_decode($profil->tagline) !!}</div>

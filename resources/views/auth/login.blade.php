@@ -17,7 +17,7 @@
             <!-- Logo Section -->
             <div class="flex justify-center mb-8">
                 <div class="p-4 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-inner">
-                    <img class="h-20 w-auto rounded-2xl shadow-lg" src="asset/img/logo.jpg" alt="logo">
+                    <img class="h-20 w-auto rounded-2xl shadow-lg" src="{{ asset('asset/img/default-logo.jpg') }}" alt="logo">
                 </div>
             </div>
 

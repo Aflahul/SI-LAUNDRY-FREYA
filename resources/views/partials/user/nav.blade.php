@@ -3,11 +3,7 @@
         <div class="flex flex-wrap items-center justify-between mx-auto px-6 py-3">
             <div class="flex items-center gap-4">
                 <a href="/" class="flex items-center group">
-                    @if ($profil->logo)
-                        <img class="h-10 w-auto rounded-lg shadow-md transition-transform group-hover:scale-110" src="{{ 'data:image/jpeg;base64,' . base64_encode($profil->logo) }}" alt="logo">
-                    @else
-                        <img class="h-10 w-auto rounded-lg" src="{{ asset('assets/img/default-logo.jpg') }}" alt="default logo">
-                    @endif
+                    <img class="h-10 w-auto rounded-lg shadow-md transition-transform group-hover:scale-110" src="{{ asset('asset/img/default-logo.jpg') }}" alt="logo">
                 </a>
                 <div class="hidden sm:block">
                     <p class="text-xs font-black text-garis uppercase tracking-widest opacity-60">Freya Laundry</p>
