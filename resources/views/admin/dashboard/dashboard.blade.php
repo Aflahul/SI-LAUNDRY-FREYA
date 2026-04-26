@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="p-3 mt-1 sm:ml-[17rem] text-sm">
-        <div class="px-4 mb-1 mt-10">
+        <div class="px-4 mb-1">
             <span class="py-1 rounded justify-end text-xs"><i>{{ $tanggal }}</i></span>
             <!-- Di dalam template Blade Laravel -->
             @if (session('success'))
