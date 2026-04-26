@@ -9,8 +9,8 @@ class Order extends Model
 {
     protected $table = 'tb_order';
     protected $primaryKey = 'id_order';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public function pelanggan()
     {
         return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
@@ -25,9 +25,41 @@ class Order extends Model
     {
         parent::boot();
         static::created(function ($order) {
-            // Mengupdate kolom "total order" di tabel tb_pelanggan
-            $order->pelanggan->total_order = $order->pelanggan->orders->count();
-            $order->pelanggan->save();
+            // Mengupdate kolom "total order" di tabel tb_pelanggan secara otomatis
+            $pelanggan = $order->pelanggan;
+            if ($pelanggan) {
+                $pelanggan->total_order = $pelanggan->orders()->count();
+                $pelanggan->save();
+            }
+        });
+
+        static::updated(function ($order) {
+            // Jika id_pelanggan berubah, update kedua pelanggan (lama dan baru)
+            if ($order->isDirty('id_pelanggan')) {
+                $oldPelangganId = $order->getOriginal('id_pelanggan');
+                $newPelangganId = $order->id_pelanggan;
+
+                $oldPelanggan = Pelanggan::find($oldPelangganId);
+                if ($oldPelanggan) {
+                    $oldPelanggan->total_order = $oldPelanggan->orders()->count();
+                    $oldPelanggan->save();
+                }
+
+                $newPelanggan = Pelanggan::find($newPelangganId);
+                if ($newPelanggan) {
+                    $newPelanggan->total_order = $newPelanggan->orders()->count();
+                    $newPelanggan->save();
+                }
+            }
+        });
+
+        static::deleted(function ($order) {
+            // Mengupdate kolom "total order" saat data dihapus
+            $pelanggan = $order->pelanggan;
+            if ($pelanggan) {
+                $pelanggan->total_order = $pelanggan->orders()->count();
+                $pelanggan->save();
+            }
         });
     }
 }

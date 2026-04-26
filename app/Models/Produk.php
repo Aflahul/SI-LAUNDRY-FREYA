@@ -13,6 +13,6 @@ class Produk extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'nama_layanan');
+        return $this->hasMany(Order::class, 'id_layanan');
     }
 }

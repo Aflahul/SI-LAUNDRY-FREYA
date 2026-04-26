@@ -28,18 +28,13 @@ class OrderController extends Controller
 
         // Pastikan status sedang cuci
         if ($order->status === 'Sedang Cuci') {
-            // Ubah status  menjadi sudah cuci
             $order->status = 'Selesai Dicuci';
             $order->save();
 
-            // Redirect dengan pesan sukses
-            return redirect('/order')->with('success', 'Status berhasil diubah');
+            return redirect('/order')->with('success', 'Pesanan berhasil ditandai sebagai Selesai Dicuci');
         }
 
-        // Jika status pembayaran adalah "Sudah Bayar", tambahkan qty ke total_orderan pada model Produk
-
-        // Redirect jika status sudah selesai atau jika status bukan "Sudah Dicuci"
-        return redirect('/order')->with('error', 'Status sudah selesai atau status_pembayaran bukan "Sudah Bayar"');
+        return redirect('/order')->with('error', 'Status pesanan tidak dapat diubah (mungkin sudah selesai)');
     }
 
 
@@ -144,12 +139,6 @@ class OrderController extends Controller
             $order->status = 'Sedang Cuci';
             $order->status_pembayaran = $statusPembayaran;
             $order->save();
-
-            // Mengupdate nilai kolom "total_order" di tabel tb_pelanggan
-            $pelanggan = Pelanggan::find($request->id_pelanggan);
-            $total_order = Order::where('id_pelanggan', $request->id_pelanggan)->count();
-            $pelanggan->total_order = $total_order;
-            $pelanggan->save();
 
             return redirect('/order')->with('success', 'Data order berhasil ditambahkan.');
         } else {

@@ -10,6 +10,7 @@ class Arus extends Model
     use HasFactory;
 
     protected $table = 'tb_arus';
+    protected $primaryKey = 'id_arus';
     protected $dates = ['tgl'];
 
 
