@@ -11,6 +11,12 @@ class Order extends Model
     protected $primaryKey = 'id_order';
     public $incrementing = true;
     protected $keyType = 'int';
+
+    protected $casts = [
+        'estimasi_selesai' => 'datetime',
+        'tgl_order' => 'datetime',
+    ];
+
     public function pelanggan()
     {
         return $this->belongsTo(Pelanggan::class, 'id_pelanggan');

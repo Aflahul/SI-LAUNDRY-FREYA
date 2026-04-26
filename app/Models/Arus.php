@@ -11,11 +11,9 @@ class Arus extends Model
 
     protected $table = 'tb_arus';
     protected $primaryKey = 'id_arus';
-    protected $dates = ['tgl'];
-
-
-    // Jika ada kolom created_at dan updated_at dalam tabel
-    // public $timestamps = false;
+    protected $casts = [
+        'tgl' => 'datetime',
+    ];
 
     protected $fillable = ['kode', 'nama', 'arus','tgl', 'total','saldo'];
 }

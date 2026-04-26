@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Freya Laundry | {{ $title }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="{{ asset('asset/css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/css/all.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,6 +16,9 @@
     <script src="{{ asset('asset/tinymce/js/tinymce/tinymce.min.js') }}"></script>
    <script src="{{ asset('js/app.js') }}" defer></script>
    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
         .tinymce-editor {
             background-color: #F4F6FF;
         }
@@ -32,9 +37,9 @@
         @endif
     @endif
 
-    <main class="pt-16 min-h-screen">
+    <div id="main-content" class="min-h-screen">
         @yield('content')
-    </main>
+    </div>
     <script>
         // Mengatur zona waktu JavaScript ke UTC+8
         Intl.DateTimeFormat().resolvedOptions().timeZone = 'UTC+8';
