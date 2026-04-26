@@ -21,7 +21,7 @@
 </head>
 
 <body class="bg-latar text-sm font-sans antialiased">
-    <div class="pt-24 min-h-screen">
+    <div class="pt-20 min-h-screen">
         @include('partials/admin/navbar')
 
     @if (Auth::check())

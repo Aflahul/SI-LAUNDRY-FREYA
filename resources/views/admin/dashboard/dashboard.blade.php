@@ -152,7 +152,42 @@
                     </div>
                 </div>
             </div>
-            <div class="w-1/3">
+            <div class="w-1/3 space-y-8">
+                <!-- Info Card Baru -->
+                <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden bg-gradient-to-br from-sudah/10 to-transparent">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-tulisan">Business Insights</h3>
+                            <span class="px-2 py-1 bg-kuning/20 text-garis text-[10px] font-bold rounded-lg">LIVE</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-sudah shadow-sm">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-medium">Target Harian</p>
+                                    <p class="text-sm font-bold text-tulisan">85% Tercapai</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-white/50 rounded-xl flex items-center justify-center text-belum shadow-sm">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-medium">Beban Kerja</p>
+                                    <p class="text-sm font-bold text-tulisan">Normal ({{ count($proses) }} Antrian)</p>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <div class="w-full bg-white/30 rounded-full h-1.5">
+                                    <div class="bg-sudah h-1.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="glass rounded-2xl shadow-sm border border-white/20 overflow-hidden">
                     <div class="p-6 border-b border-white/10 flex justify-between items-center bg-white/40">
                         <h3 class="font-bold text-tulisan">Pelanggan Baru</h3>
