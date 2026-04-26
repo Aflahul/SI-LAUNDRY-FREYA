@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tb_profil', function (Blueprint $table) {
-            $table->string('kontak');
-        });
+        // Schema::table('tb_profil', function (Blueprint $table) {
+        //     $table->string('kontak');
+        // });
     }
 
 

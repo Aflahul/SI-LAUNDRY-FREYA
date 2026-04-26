@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('tb_pengeluaran', function (Blueprint $table) {
-        //     $table->id('id_pengeluaran');
-        //     $table->string('kd_pengeluaran');
-        //     $table->string('pengeluaran');
-        //     $table->string('desk');
-        //     $table->string('jumlah');
-        //     $table->string('operator');
-        //     $table->string('waktu');
-        //     $table->timestamps();
-        // });
-        Schema::table('tb_pengeluaran', function (Blueprint $table) {
-            $table->integer('jumlah')->change();
-            $table->date('waktu')->change();
+        Schema::create('tb_pengeluaran', function (Blueprint $table) {
+            $table->id('id_pengeluaran');
+            $table->string('kd_pengeluaran');
+            $table->string('pengeluaran');
+            $table->string('desk');
+            $table->integer('jumlah');
+            $table->string('operator');
+            $table->date('waktu');
+            $table->timestamps();
         });
     }
 
